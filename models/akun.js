@@ -11,6 +11,8 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Akun.belongsToMany(models.Joki, { through: models.Jadwal});
+      Akun.belongsToMany(models.Jam, { through: models.Jadwal});
     }
   }
   Akun.init({

@@ -1,0 +1,20 @@
+<%- include('../layouts/header.ejs'); -%>
+<div class = "container">
+    <div class="p-2">
+        <h3>Add new Jam</h3>
+        <form action="/jam/create" method="post">
+            <div class="mb-3">
+                <label for="Sesi" class="form-label">Sesi</label>
+                <input type="text" class="form-control" id="Sesi" name="sesi">
+            </div>
+            <div class="mb-3">
+                <label for="Jam" class="form-label">Jam</label>
+                <input type="text" class="form-control" id="Jam" name="jam">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>
+</table>
+
+<%- include('../layouts/footer.ejs'); -%>

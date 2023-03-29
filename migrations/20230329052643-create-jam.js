@@ -10,10 +10,10 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       sesi: {
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING
       },
       jam: {
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,

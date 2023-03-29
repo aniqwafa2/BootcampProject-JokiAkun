@@ -1,10 +1,10 @@
-const {Akun} = require('../models');
+const {Jam,Jadwal} = require('../models');
 
-class AkunController{
+class JamController {
     static get(req, res){
-        Akun.findAll()
+        Jam.findAll()
             .then((data) => {
-                res.render('akun/index.ejs',{data});
+                res.render('jam/index.ejs',{data});
                 //res.send(data);
             })
             .catch((err) => {
@@ -12,20 +12,20 @@ class AkunController{
             })
     }
     static create(req, res){
-        let {name, gameID, server, phone} = req.body;
-        Akun.create({name, gameID, server, phone})
+        let {sesi,jam} = req.body;
+        Jam.create({sesi,jam})
             .then(() => {
-                res.redirect('/akun');
+                res.redirect('/Jam');
             })
             .catch((err) => {
-                //res.redirect('/akun');
+                //res.redirect('/Jam');
                 res.send(req.body);
             })
     }
     static createPage(req,res){
-        Akun.findAll()
+        Jam.findAll()
         .then((data) => {
-            res.render('akun/create.ejs',{data});
+            res.render('Jam/create.ejs',{data});
         })
         .catch((err) => {
             res.send(err);
@@ -33,10 +33,10 @@ class AkunController{
     }
     static delete(req, res){
         let id = req.params.id;
-        Akun.destroy({where: {id}})
+        Jam.destroy({where: {id}})
             .then(() => {
-                Jadwal.destroy({where: {akunId : id}});
-                res.redirect('/akun');
+                Jadwal.destroy({where: {jamId : id}});
+                res.redirect('/Jam');
             })
             .catch((err) => {
                 res.send(err);
@@ -44,25 +44,25 @@ class AkunController{
     }
     static getById(req,res){
         let id = req.params.id;
-        Akun.findAll({where: {id}})
+        Jam.findAll({where: {id}})
             .then((data) => {
                 data = data[0];
-                res.render('akun/edit.ejs',{data});
+                res.render('jam/edit.ejs',{data});
             })
             .catch((err) => {
                 res.send(err);
             })
     }
     static edit(req, res){
-        let {name, gameID, server, phone} = req.body;
+        let {sesi, jam} = req.body;
         let id = req.params.id;
-        Akun.update({name, gameID, server, phone},{where: {id}})
+        Jam.update({sesi, jam},{where: {id}})
             .then(() => {
-                res.redirect('/akun');
+                res.redirect('/jam');
             })
             .catch((err) => {
                 res.send(err);
             })
     }
 }
-module.exports = AkunController;
+module.exports = JamController;
