@@ -1,0 +1,28 @@
+<%- include('../layouts/header.ejs'); -%>
+<div class = "container">
+    <div class="p-2">
+        <h3>Edit Akun</h3>
+        <form action="/akun/update/<%= data.id%>" method="post">
+            <div class="mb-3">
+                <label for="Name" class="form-label">Name</label>
+                <input type="text" class="form-control" id="Name" name="name" value="<%= data.name%>">
+            </div>
+            <div class="mb-3">
+                <label for="GameID" class="form-label">Game ID</label>
+                <input type="text" class="form-control" id="GameID" name="gameID" value="<%= data.gameID%>">
+            </div>
+            <div class="mb-3">
+                <label for="Server" class="form-label">Server</label>
+                <input type="text" class="form-control" id="Server" name="server" value="<%= data.server%>">
+            </div>
+            <div class="mb-3">
+                <label for="Phone" class="form-label">Phone Number</label>
+                <input type="text" class="form-control" id="Phone" name="phone" value="<%= data.phone%>">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>
+</table>
+
+<%- include('../layouts/footer.ejs'); -%>

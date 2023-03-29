@@ -1,6 +1,6 @@
 {
   "name": "jokiakun",
-  "description": "",
+  "description": "npx sequelize-cli model:generate --name Joki --attributes name:string,age:integer,phone:string,address:string,image:string,status:string",
   "version": "1.0.0",
   "main": "app.js",
   "scripts": {

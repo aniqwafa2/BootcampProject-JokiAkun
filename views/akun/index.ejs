@@ -1,0 +1,37 @@
+<%- include('../layouts/header.ejs'); -%>
+<div class = "container">
+    <h3>Akun list</h3>
+    <div class="d-flex justify-content-end m-2">
+        <a class="btn btn-primary" href="/akun/create">Tambah Akun Baru</a>
+    </div>
+    <table class="table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>NAME</th>
+            <th>GAME ID</th>
+            <th>SERVER</th>
+            <th>PHONE NUMBER</th>
+            <th style="width:300px">Option</th>
+          </tr>
+        </thead>
+        <tbody>
+            <% data.forEach((akun) => { %>
+          <tr>
+            <th><%= akun.id %></th>
+            <td><%= akun.name %></td>
+            <td><%= akun.gameID %></td>
+            <td><%= akun.server %></td>
+            <td><%= akun.phone %></td>
+            <td style="width:300px">
+                <a class="btn btn-danger" href="/akun/delete/<%= akun.id%>">Delete</a>
+                <a class="btn btn-warning" href="/akun/edit/<%= akun.id%>">Edit</a>
+            </td>
+        </tr>
+        <% }); %>
+        </tbody>
+
+</div>
+</table>
+
+<%- include('../layouts/footer.ejs'); -%>

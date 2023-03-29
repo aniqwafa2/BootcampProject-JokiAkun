@@ -1,0 +1,33 @@
+<%- include('../layouts/header.ejs'); -%>
+<div class = "container">
+    <h3>Jam list</h3>
+    <div class="d-flex justify-content-end m-2">
+        <a class="btn btn-primary" href="/jam/create">Tambah Jam Baru</a>
+    </div>
+    <table class="table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>SESI</th>
+            <th>JAM</th>
+            <th style="width:300px">Option</th>
+          </tr>
+        </thead>
+        <tbody>
+            <% data.forEach((jam) => { %>
+          <tr>
+            <th><%= jam.id %></th>
+            <td><%= jam.sesi %></td>
+            <td><%= jam.jam %></td>
+            <td style="width:300px">
+                <a class="btn btn-danger" href="/jam/delete/<%= jam.id%>">Delete</a>
+                <a class="btn btn-warning" href="/jam/edit/<%= jam.id%>">Edit</a>
+            </td>
+        </tr>
+        <% }); %>
+        </tbody>
+
+</div>
+</table>
+
+<%- include('../layouts/footer.ejs'); -%>
