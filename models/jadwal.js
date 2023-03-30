@@ -17,9 +17,30 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Jadwal.init({
-    JokiId: DataTypes.INTEGER,
-    AkunId: DataTypes.INTEGER,
-    JamId: DataTypes.INTEGER
+    JokiId: {
+      type: DataTypes.INTEGER,
+      validate: {
+        notEmpty: {
+          message: "JokiId can not be empty.",
+        },
+      },
+    },
+    AkunId: {
+      type: DataTypes.INTEGER,
+      validate: {
+        notEmpty: {
+          message: "AkunId can not be empty.",
+        },
+      },
+    },
+    JamId: {
+      type: DataTypes.INTEGER,
+      validate: {
+        notEmpty: {
+          message: "JamId can not be empty.",
+        },
+      },
+    },
   }, {
     sequelize,
     modelName: 'Jadwal',

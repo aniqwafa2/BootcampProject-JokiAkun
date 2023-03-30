@@ -16,12 +16,54 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Joki.init({
-    name: DataTypes.STRING,
-    age: DataTypes.INTEGER,
-    phone: DataTypes.STRING,
-    address: DataTypes.STRING,
-    image: DataTypes.STRING,
-    status: DataTypes.STRING
+    name: {
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty: {
+          message: "Name can not be empty.",
+        },
+      },
+    },
+    age: {
+      type: DataTypes.INTEGER,
+      validate: {
+        notEmpty: {
+          message: "Age can not be empty.",
+        },
+      },
+    },
+    phone: {
+        type: DataTypes.STRING,
+        validate: {
+          notEmpty: {
+            message: "Phone can not be empty.",
+          },
+        },
+      },
+    address: {
+        type: DataTypes.STRING,
+        validate: {
+          notEmpty: {
+            message: "Address can not be empty.",
+          },
+        },
+      },
+    image: {
+        type: DataTypes.STRING,
+        validate: {
+          notEmpty: {
+            message: "Image can not be empty.",
+          },
+        },
+      },
+    status: {
+        type: DataTypes.STRING,
+        validate: {
+          notEmpty: {
+            message: "Status can not be empty.",
+          },
+        },
+      },
   }, {
     sequelize,
     modelName: 'Joki',
