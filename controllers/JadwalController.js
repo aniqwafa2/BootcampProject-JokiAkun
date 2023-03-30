@@ -29,6 +29,20 @@ class JadwalController{
             res.send(err);
         }
     }
+    static async editDetail(req,res){
+        let {akunId, jamId, jokiId} = req.params;
+        let {JokiId, AkunId, JamId} = req.body;
+        try{
+            Jadwal.update({JokiId, AkunId, JamId},{where:{
+                AkunId: akunId,
+                JamId: jamId,
+                JokiId: jokiId    
+            }})
+            res.redirect('/Jadwal');
+        }catch (err){
+            res.send(err);
+        }
+    }
 }
 
 module.exports = JadwalController;

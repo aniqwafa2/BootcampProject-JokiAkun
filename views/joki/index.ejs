@@ -24,10 +24,15 @@
             <td><%= joki.age %></td>
             <td><%= joki.phone %></td>
             <td><%= joki.address %></td>
-            <td><%= joki.status %></td>
+            <% if(joki.status > 0){%>
+              <td>Aktif</td>
+            <%}else{%>
+              <td>Non Aktif</td>
+            <%}%>
             <td style="width:300px">
                 <a class="btn btn-danger" href="/joki/delete/<%= joki.id%>">Delete</a>
                 <a class="btn btn-warning" href="/joki/edit/<%= joki.id%>">Edit</a>
+                <a class="btn btn-warning" href="/joki/detail/<%= joki.id%>">Detail</a>
             </td>
         </tr>
         <% }); %>

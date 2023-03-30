@@ -1,0 +1,47 @@
+<%- include('../layouts/header.ejs'); -%>
+<div class = "container">
+    <h3>Detail Joki list</h3>
+    <div class="d-flex justify-content-start m-2">
+        <% Jokies.forEach((joki) => {%>
+        <div class="row">
+            <a>Name     : <%= joki.name%></a>
+            <a>Age      : <%= joki.age%></a>
+            <a>Phone    : <%= joki.phone%></a>
+            <a>Adress   : <%= joki.address%></a>
+        </div>
+        <%})%>
+    </div>
+    <div>
+        <h3>Detail list Joki's Jadwal</h3>
+    </div>
+    <table class="table">
+        <thead>
+          <tr>
+            <th>No</th>
+            <th>NAME</th>
+            <th>GAME ID</th>
+            <th>SESI</th>
+            <th>JAM</th>
+            <th style="width:300px">Option</th>
+          </tr>
+        </thead>
+        <tbody>
+            <% data.forEach((item, indx) => { %>
+          <tr>
+            <th><%= indx+1 %></th>
+            <td><%= item.Akun.name %></td>
+            <td><%= item.Akun.gameID %></td>
+            <td><%= item.Jam.sesi %></td>
+            <td><%= item.Jam.jam %></td>
+            <td style="width:300px">
+                <a class="btn btn-danger" href="/joki/detail/delete/<%= item.Akun.id%>/<%= item.Jam.id%>/<%= Jokies[0].id%>">Delete</a>
+                <a class="btn btn-warning" href="/joki/detail/edit/<%= item.Akun.id%>/<%= item.Jam.id%>/<%= Jokies[0].id%>">Edit</a>
+            </td>
+        </tr>
+        <% }); %>
+        </tbody>
+
+</div>
+</table>
+
+<%- include('../layouts/footer.ejs'); -%>
