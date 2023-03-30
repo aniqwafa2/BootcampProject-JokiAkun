@@ -16,8 +16,22 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Joki.init({
-    name: DataTypes.STRING,
-    age: DataTypes.INTEGER,
+    name: {
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty: {
+          message: "Name can not be empty.",
+        },
+      },
+    },
+    age: {
+      type: DataTypes.INTEGER,
+      validate: {
+        notEmpty: {
+          message: "Age can not be empty.",
+        },
+      },
+    },
     phone:{
        type: DataTypes.STRING,
        validate: {

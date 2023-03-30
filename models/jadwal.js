@@ -1,7 +1,5 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
+"use strict";
+const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class Jadwal extends Model {
     /**
@@ -16,20 +14,44 @@ module.exports = (sequelize, DataTypes) => {
       Jadwal.belongsTo(models.Joki);
     }
   }
-  Jadwal.init({
-    JokiId: DataTypes.INTEGER,
-    AkunId: DataTypes.INTEGER,
-    JamId: DataTypes.INTEGER
-  }, {
-    hooks: {
-      beforeCreate: (jadwal, option) => {
-        jadwal.JokiId = Number(jadwal.JokiId);
-        jadwal.AkunId = Number(jadwal.AkunId);
-        jadwal.JamId = Number(jadwal.JamId);
-      }
+  Jadwal.init(
+    {
+      JokiId: {
+        type: DataTypes.INTEGER,
+        validate: {
+          notEmpty: {
+            message: "JokiId can not be empty.",
+          },
+        },
+      },
+      AkunId: {
+        type: DataTypes.INTEGER,
+        validate: {
+          notEmpty: {
+            message: "AkunId can not be empty.",
+          },
+        },
+      },
+      JamId: {
+        type: DataTypes.INTEGER,
+        validate: {
+          notEmpty: {
+            message: "JamId can not be empty.",
+          },
+        },
+      },
     },
-    sequelize,
-    modelName: 'Jadwal',
-  });
+    {
+      hooks: {
+        beforeCreate: (jadwal, option) => {
+          jadwal.JokiId = Number(jadwal.JokiId);
+          jadwal.AkunId = Number(jadwal.AkunId);
+          jadwal.JamId = Number(jadwal.JamId);
+        },
+      },
+      sequelize,
+      modelName: "Jadwal",
+    }
+  );
   return Jadwal;
 };

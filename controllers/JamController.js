@@ -37,7 +37,7 @@ class JamController {
             Jam.destroy({where: {id}});
             const result = Jadwal.findAll({where:{JamId : id}});
             if(result){
-                Jadwal.destroy({where: {jamId : id}});
+                Jadwal.destroy({where: {JamId : id}});
             }
             res.redirect('/Jam');
         }catch (err){

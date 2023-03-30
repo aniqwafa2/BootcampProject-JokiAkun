@@ -1,27 +1,27 @@
 <%- include('../layouts/header.ejs'); -%>
 <div class = "container">
     <div class="p-2">
-        <h3>Edit Akun</h3>
-        <form action="/akun/update/<%= data.id%>" method="post">
+        <h3>Edit Penjoki</h3>
+        <form action="/joki/edit/<%= data.id%>" method="post">
             <div class="mb-3">
                 <label for="Name" class="form-label">Name</label>
-                <input type="text" class="form-control" id="Name" name="name">
+                <input type="text" class="form-control" id="Name" name="name" value="<%= data.name%>">
             </div>
             <div class="mb-3">
                 <label for="Age" class="form-label">Age</label>
-                <input type="text" class="form-control" id="Age" name="age">
+                <input type="text" class="form-control" id="Age" name="age" value="<%= data.age%>">
             </div>
             <div class="mb-3">
                 <label for="Phone" class="form-label">Phone Number</label>
-                <input type="text" class="form-control" id="Phone" name="phone">
+                <input type="text" class="form-control" id="Phone" name="phone" value="<%= data.phone%>">
             </div>
             <div class="mb-3">
                 <label for="Adress" class="form-label">Adress</label>
-                <input type="text" class="form-control" id="Adress" name="adress">
+                <input type="text" class="form-control" id="Adress" name="adress" value="<%= data.address%>">
             </div>
             <div class="mb-3">
                 <label for="Image" class="form-label">Image</label>
-                <input type="text" class="form-control" id="Image" name="image">
+                <input type="text" class="form-control" id="Image" name="image" value="<%= data.image%>">
             </div>
             <div class="mb-3">
                 <label for="Status" class="form-label">Status</label>

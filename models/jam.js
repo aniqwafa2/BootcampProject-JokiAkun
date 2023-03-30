@@ -1,7 +1,5 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
+"use strict";
+const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class Jam extends Model {
     /**
@@ -11,16 +9,33 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Jam.belongsToMany(models.Joki, { through: models.Jadwal});
-      Jam.belongsToMany(models.Akun, { through: models.Jadwal});
+      Jam.belongsToMany(models.Joki, { through: models.Jadwal });
+      Jam.belongsToMany(models.Akun, { through: models.Jadwal });
     }
   }
-  Jam.init({
-    sesi: DataTypes.INTEGER,
-    jam: DataTypes.INTEGER
-  }, {
-    sequelize,
-    modelName: 'Jam',
-  });
+  Jam.init(
+    {
+      sesi: {
+        type: DataTypes.INTEGER,
+        validate: {
+          notEmpty: {
+            message: "Sesi can not be empty.",
+          },
+        },
+      },
+      jam: {
+        type: DataTypes.INTEGER,
+        validate: {
+          notEmpty: {
+            message: "Jam can not be empty.",
+          },
+        },
+      },
+    },
+    {
+      sequelize,
+      modelName: "Jam",
+    }
+  );
   return Jam;
 };

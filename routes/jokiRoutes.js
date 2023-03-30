@@ -10,6 +10,6 @@ jokiRoute.get('/detail/delete/:akunId/:jamId/:jokiId', JokiController.deleteDeta
 jokiRoute.get('/detail/edit/:akunId/:jamId/:jokiId', JokiController.getByIdDetail);
 
 jokiRoute.post('/create', JokiController.create);
-jokiRoute.post('/edit', JokiController.edit);
+jokiRoute.post('/edit/:id', JokiController.edit);
 
 module.exports = jokiRoute;
