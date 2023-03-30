@@ -18,11 +18,22 @@ module.exports = (sequelize, DataTypes) => {
   Joki.init({
     name: DataTypes.STRING,
     age: DataTypes.INTEGER,
-    phone: DataTypes.STRING,
+    phone:{
+       type: DataTypes.STRING,
+       validate: {
+        notEmpty: true
+        }
+      },
     address: DataTypes.STRING,
     image: DataTypes.STRING,
     status: DataTypes.STRING
   }, {
+    hooks: {
+      beforeCreate: (joki, option) => {
+        joki.imgae = "https://placehold.co/600x400.png";
+        joki.status = 1;
+      }
+    },
     sequelize,
     modelName: 'Joki',
   });
