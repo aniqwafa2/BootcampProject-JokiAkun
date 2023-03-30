@@ -1,4 +1,4 @@
-const {Joki} = require('../models');
+const {Joki, Jadwal} = require('../models');
 
 class JokiController {
     static get(req, res){
@@ -12,8 +12,8 @@ class JokiController {
             })
     }
     static create(req, res){
-        let {name, age, phone, adress, image, status} = req.body;
-        Joki.create({name, age, phone, adress, image, status})
+        let {name, age, phone, address} = req.body;
+        Joki.create({name, age, phone, address})
             .then(() => {
                 res.redirect('/joki');
             })
@@ -31,16 +31,18 @@ class JokiController {
             res.send(err);
         })
     }
-    static delete(req, res){
+    static async delete(req, res){
         let id = req.params.id;
-        Joki.destroy({where: {id}})
-            .then(() => {
-                Jadwal.destroy({where: {jokiId : id}});
-                res.redirect('/joki');
-            })
-            .catch((err) => {
-                res.send(err);
-            })
+        try{
+            Joki.destroy({where: {id}})
+            const result = await Jadwal.findAll({where: {JokiId : Number(id)}});
+            if (result){
+                Jadwal.destroy({where: {JokiId : id}});
+            }
+            res.redirect('/joki');
+        }catch (err){
+            res.send(err);
+        }
     }
     static getById(req,res){
         let id = req.params.id;

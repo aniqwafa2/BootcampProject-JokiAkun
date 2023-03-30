@@ -21,6 +21,13 @@ module.exports = (sequelize, DataTypes) => {
     AkunId: DataTypes.INTEGER,
     JamId: DataTypes.INTEGER
   }, {
+    hooks: {
+      beforeCreate: (jadwal, option) => {
+        jadwal.JokiId = Number(jadwal.JokiId);
+        jadwal.AkunId = Number(jadwal.AkunId);
+        jadwal.JamId = Number(jadwal.JamId);
+      }
+    },
     sequelize,
     modelName: 'Jadwal',
   });

@@ -1,0 +1,31 @@
+<%- include('../layouts/header.ejs'); -%>
+<div class = "container">
+    <h3>Jadwal list</h3>
+    <div class="d-flex justify-content-end m-2">
+        <a class="btn btn-primary" href="/jadwal/create">Tambah Jadwal Baru</a>
+    </div>
+    <table class="table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>JOKI</th>
+            <th>GAME ID</th>
+            <th>SESI</th>
+          </tr>
+        </thead>
+        <tbody>
+            <% 
+            data.forEach((jadwal, no) => { %>
+          <tr>
+            <th><%= no+1 %></th>
+            <td><%= jadwal.Joki.name %></td>
+            <td><%= jadwal.Akun.gameID %></td>
+            <td><%= jadwal.Jam.sesi %></td>
+        </tr>
+        <% }); %>
+        </tbody>
+
+</div>
+</table>
+
+<%- include('../layouts/footer.ejs'); -%>

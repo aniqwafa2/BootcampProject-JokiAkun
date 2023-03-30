@@ -19,7 +19,12 @@ module.exports = (sequelize, DataTypes) => {
     name: DataTypes.STRING,
     gameID: DataTypes.STRING,
     server: DataTypes.STRING,
-    phone: DataTypes.STRING
+    phone: {
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty: true
+      }
+    }
   }, {
     sequelize,
     modelName: 'Akun',
