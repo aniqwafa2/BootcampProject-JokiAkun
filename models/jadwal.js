@@ -14,44 +14,34 @@ module.exports = (sequelize, DataTypes) => {
       Jadwal.belongsTo(models.Joki);
     }
   }
-  Jadwal.init(
-    {
-      JokiId: {
-        type: DataTypes.INTEGER,
-        validate: {
-          notEmpty: {
-            message: "JokiId can not be empty.",
-          },
-        },
-      },
-      AkunId: {
-        type: DataTypes.INTEGER,
-        validate: {
-          notEmpty: {
-            message: "AkunId can not be empty.",
-          },
-        },
-      },
-      JamId: {
-        type: DataTypes.INTEGER,
-        validate: {
-          notEmpty: {
-            message: "JamId can not be empty.",
-          },
+Jadwal.init({
+    JokiId: {
+      type: DataTypes.INTEGER,
+      validate: {
+        notEmpty: {
+          message: "JokiId can not be empty.",
         },
       },
     },
-    {
-      hooks: {
-        beforeCreate: (jadwal, option) => {
-          jadwal.JokiId = Number(jadwal.JokiId);
-          jadwal.AkunId = Number(jadwal.AkunId);
-          jadwal.JamId = Number(jadwal.JamId);
+    AkunId: {
+      type: DataTypes.INTEGER,
+      validate: {
+        notEmpty: {
+          message: "AkunId can not be empty.",
         },
       },
-      sequelize,
-      modelName: "Jadwal",
-    }
-  );
+    },
+    JamId: {
+      type: DataTypes.INTEGER,
+      validate: {
+        notEmpty: {
+          message: "JamId can not be empty.",
+        },
+      },
+    },
+  }, {
+    sequelize,
+    modelName: 'Jadwal',
+  });
   return Jadwal;
 };

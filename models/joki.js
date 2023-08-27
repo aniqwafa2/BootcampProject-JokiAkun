@@ -32,15 +32,38 @@ module.exports = (sequelize, DataTypes) => {
         },
       },
     },
-    phone:{
-       type: DataTypes.STRING,
-       validate: {
-        notEmpty: true
-        }
+  phone: {
+        type: DataTypes.STRING,
+        validate: {
+          notEmpty: {
+            message: "Phone can not be empty.",
+          },
+        },
       },
-    address: DataTypes.STRING,
-    image: DataTypes.STRING,
-    status: DataTypes.STRING
+    address: {
+        type: DataTypes.STRING,
+        validate: {
+          notEmpty: {
+            message: "Address can not be empty.",
+          },
+        },
+      },
+    image: {
+        type: DataTypes.STRING,
+        validate: {
+          notEmpty: {
+            message: "Image can not be empty.",
+          },
+        },
+      },
+    status: {
+        type: DataTypes.STRING,
+        validate: {
+          notEmpty: {
+            message: "Status can not be empty.",
+          },
+        },
+      },
   }, {
     hooks: {
       beforeCreate: (joki, option) => {
