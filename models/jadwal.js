@@ -1,7 +1,5 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
+"use strict";
+const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class Jadwal extends Model {
     /**
@@ -16,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
       Jadwal.belongsTo(models.Joki);
     }
   }
-  Jadwal.init({
+Jadwal.init({
     JokiId: {
       type: DataTypes.INTEGER,
       validate: {

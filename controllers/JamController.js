@@ -31,16 +31,18 @@ class JamController {
             res.send(err);
         })
     }
-    static delete(req, res){
+    static async delete(req, res){
         let id = req.params.id;
-        Jam.destroy({where: {id}})
-            .then(() => {
-                Jadwal.destroy({where: {jamId : id}});
-                res.redirect('/Jam');
-            })
-            .catch((err) => {
-                res.send(err);
-            })
+        try{
+            Jam.destroy({where: {id}});
+            const result = Jadwal.findAll({where:{JamId : id}});
+            if(result){
+                Jadwal.destroy({where: {JamId : id}});
+            }
+            res.redirect('/Jam');
+        }catch (err){
+            res.send(err);
+        }
     }
     static getById(req,res){
         let id = req.params.id;

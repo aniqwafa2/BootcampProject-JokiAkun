@@ -31,16 +31,18 @@ class AkunController{
             res.send(err);
         })
     }
-    static delete(req, res){
+    static async delete(req, res){
         let id = req.params.id;
-        Akun.destroy({where: {id}})
-            .then(() => {
+        try{
+            Akun.destroy({where: {id}});
+            let result = Jadwal.findAll({where: {AkunId : id}});
+            if(result){
                 Jadwal.destroy({where: {akunId : id}});
-                res.redirect('/akun');
-            })
-            .catch((err) => {
-                res.send(err);
-            })
+            }
+            res.redirect('/akun');
+        } catch (err){
+            res.send(err);
+        }
     }
     static getById(req,res){
         let id = req.params.id;

@@ -7,6 +7,6 @@ akunRoute.get('/delete/:id', AkunController.delete);
 akunRoute.get('/edit/:id', AkunController.getById);
 
 akunRoute.post('/create', AkunController.create);
-akunRoute.post('/edit', AkunController.edit);
+akunRoute.post('/edit/:id', AkunController.edit);
 
 module.exports = akunRoute;

@@ -1,0 +1,36 @@
+<%- include('../layouts/header.ejs'); -%>
+<div class = "container">
+    <div class="p-2">
+        <h3>Add new Jadwal</h3>
+        <form action="/jadwal/create" method="post">
+            <div class="mb-3">
+                <label for="Joki" class="form-label">Joki</label>
+                <select id="Joki" class="form-select" name="JokiId">
+                    <% joki.forEach((Joki) => {%>
+                    <option value="<%= Joki.id%>"><%=Joki.name%></option>
+                    <% })%>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="gameID" class="form-label">Game ID</label>
+                <select id="gameID" class="form-select" name="AkunId">
+                    <% akun.forEach((Akun) => {%>
+                    <option value="<%= Akun.id%>"><%= Akun.gameID%></option>
+                    <% })%>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="Sesi" class="form-label">Sesi</label>
+                <select id="Sesi" class="form-select" name="JamId">
+                    <% jam.forEach((Jam) => {%>
+                    <option value="<%= Jam.id%>"><%= Jam.sesi%> (<%= Jam.jam%>)</option>
+                    <% })%>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>
+</table>
+
+<%- include('../layouts/footer.ejs'); -%>

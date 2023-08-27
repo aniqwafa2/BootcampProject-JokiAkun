@@ -7,6 +7,6 @@ jamRoute.get('/delete/:id', JamController.delete);
 jamRoute.get('/edit/:id', JamController.getById);
 
 jamRoute.post('/create', JamController.create);
-jamRoute.post('/edit', JamController.edit);
+jamRoute.post('/edit/:id', JamController.edit);
 
 module.exports = jamRoute;

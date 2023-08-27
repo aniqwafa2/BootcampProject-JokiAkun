@@ -32,7 +32,7 @@ module.exports = (sequelize, DataTypes) => {
         },
       },
     },
-    phone: {
+  phone: {
         type: DataTypes.STRING,
         validate: {
           notEmpty: {
@@ -65,6 +65,12 @@ module.exports = (sequelize, DataTypes) => {
         },
       },
   }, {
+    hooks: {
+      beforeCreate: (joki, option) => {
+        joki.imgae = "https://placehold.co/600x400.png";
+        joki.status = 1;
+      }
+    },
     sequelize,
     modelName: 'Joki',
   });
